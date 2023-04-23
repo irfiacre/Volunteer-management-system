@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volunteer_management_system.Data;
 
@@ -11,9 +12,11 @@ using Volunteer_management_system.Data;
 namespace Volunteer_management_system.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230426042418_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,12 +89,15 @@ namespace Volunteer_management_system.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UsersID")
+                        .HasColumnType("int");
+
                     b.Property<int>("Vacancies")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UsersID");
 
                     b.ToTable("Opportunities");
                 });
@@ -149,13 +155,13 @@ namespace Volunteer_management_system.Migrations
 
             modelBuilder.Entity("Volunteer_management_system.Models.Opportunities", b =>
                 {
-                    b.HasOne("Volunteer_management_system.Models.Users", "User")
+                    b.HasOne("Volunteer_management_system.Models.Users", "Users")
                         .WithMany("CreatedOpportunities")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UsersID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Volunteer_management_system.Models.Opportunities", b =>
