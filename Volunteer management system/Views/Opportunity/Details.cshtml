@@ -1,0 +1,34 @@
+﻿@model Opportunities
+
+@{
+    ViewData["Title"] = "Add New Opportunity";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1 class="display-4">Details For @Model.Title</h1>
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-2">
+                <div>
+                    <img id="CoverPhoto" src="@Model.CoverURL" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Vacancies" class="control-label"></label>
+                    <input asp-for="Vacancies" class="form-control" placeholder="Available Positions Ex: 5" readonly>
+                    <span asp-validation-for="Vacancies" class="text-danger"></span>
+                </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control" rows="3" readonly></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@Model.ID"> Edit </a>
+                    <a class="btn btn-outline-secondary" asp-action="Index"> Back to Opportunities</a>
+                </div>
+        </div>
+    </div>
