@@ -12,8 +12,8 @@ using Volunteer_management_system.Data;
 namespace Volunteer_management_system.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20230423122858_Initial")]
-    partial class Initial
+    [Migration("20230426044846_NewTable")]
+    partial class NewTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,12 +48,9 @@ namespace Volunteer_management_system.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("OpportunitiesID")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("OpportunityID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -61,7 +58,7 @@ namespace Volunteer_management_system.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("OpportunitiesID");
+                    b.HasIndex("OpportunityID");
 
                     b.ToTable("Applications");
                 });
@@ -89,20 +86,15 @@ namespace Volunteer_management_system.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UsersID")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Vacancies")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Vacancies")
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("UsersID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Opportunities");
                 });
@@ -149,22 +141,24 @@ namespace Volunteer_management_system.Migrations
 
             modelBuilder.Entity("Volunteer_management_system.Models.Applications", b =>
                 {
-                    b.HasOne("Volunteer_management_system.Models.Opportunities", "Opportunities")
+                    b.HasOne("Volunteer_management_system.Models.Opportunities", "Opportunity")
                         .WithMany("MadeApplications")
-                        .HasForeignKey("OpportunitiesID");
+                        .HasForeignKey("OpportunityID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Opportunities");
+                    b.Navigation("Opportunity");
                 });
 
             modelBuilder.Entity("Volunteer_management_system.Models.Opportunities", b =>
                 {
-                    b.HasOne("Volunteer_management_system.Models.Users", "Users")
+                    b.HasOne("Volunteer_management_system.Models.Users", "User")
                         .WithMany("CreatedOpportunities")
-                        .HasForeignKey("UsersID")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Users");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Volunteer_management_system.Models.Opportunities", b =>

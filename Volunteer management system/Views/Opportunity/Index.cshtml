@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Opportunities>
+
+@{
+    ViewData["Title"] = "Opportunities";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Title)</th>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>@Html.DisplayNameFor(model => model.Organization)</th>
+                    <th>@Html.DisplayNameFor(model => model.Vacancies)</th>
+                    <th>@Html.DisplayNameFor(model => model.StartDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.EndDate)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @item.Title
+                        </td>
+                        <td class="align-middle">
+                            @item.Description.Substring(0, 50) <span>....</span>
+                        </td>
+                        <td class="align-middle">
+                            @item.Organization
+                        </td>
+                        <td class="align-middle">
+                            @item.Vacancies
+                        </td>
+                        <td class="align-middle">
+                            @item.StartDate
+                        </td>
+                        <td class="align-middle">
+                            @item.EndDate
+                        </td>
+                        <td class="align-middle">
+                           <a class="btn btn-outline-primary"> <i class="bi bi-pencil-square"></i> Edit </a>
+                           <a class="btn btn-outline-info"> <i class="bi bi-eye"></i> Details </a>
+                           <a class="btn btn-danger text-white"> <i class="bi bi-trash"></i> Delete </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+</div>

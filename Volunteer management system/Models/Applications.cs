@@ -16,6 +16,6 @@ namespace Volunteer_management_system.Models
         public DateTime CreateDate { get; set; }
 
         // Relationships
-        public Opportunities Opportunities { get; set; }
+        public Opportunities Opportunity { get; set; }
     }
 }
