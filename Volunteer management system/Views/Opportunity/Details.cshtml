@@ -12,7 +12,7 @@
     <div class="col-auto">
             <div class="form-group p-1">
                 <h4>@Model.Title </h4>
-            </div>
+                </div>
         <div class="form-group p-1">
             <label asp-for="CoverURL" class="control-label"></label>
             <input asp-for="CoverURL" class="form-control" readonly>
@@ -22,7 +22,7 @@
             <input asp-for="Organization" class="form-control" readonly>
         </div>
         <div class="form-group p-1">
-            <label asp-for="Vacancies" class="control-label"></label>
+                    <label asp-for="Vacancies" class="control-label"></label>
             <input asp-for="Vacancies" class="form-control" readonly>
         </div>
 
@@ -39,14 +39,15 @@
 
         <div class="form-group py-3 px-1">
             <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@Model.ID"> <i class="bi bi-pencil-square"></i></a>
-            <a class="btn btn-info text-white" asp-action="Details" asp-route-id="@Model.ID"> <i class="bi bi-eye"></i></a>
             <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@Model.ID"> <i class="bi bi-trash"></i></a>
-        </div>
+                </div>
 
-    </div>
+                </div>
 
     <div class="form-group p-2">
-        <label asp-for="Description" class="control-label"></label>
-        <textarea asp-for="Description" class="form-control" rows="3" readonly></textarea>
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control" rows="3" readonly></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+        </div>
     </div>
-</div>
