@@ -5,13 +5,22 @@
 }
 
 <div class="row">
-    <div class="col-md-8 offset-md-2">
+    
+        <p>
+            <h1 class="display-4">My Opportunities</h1>
+        </p>
+ 
+
+    <div class="">
+        <a class="btn m-2 text-white" style="float:right; background-color:#8D021F;" asp-area="" asp-controller="Opportunity" asp-action="Create">
+                <i class="bi bi-plus-circle-fill"></i> Add New
+            </a>
+    </div>
+    <div class="">
         <table class="table">
-            <thead>
+            <thead style="color:#8D021F">
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Title)</th>
-                    <th>@Html.DisplayNameFor(model => model.Description)</th>
-                    <th>@Html.DisplayNameFor(model => model.Organization)</th>
                     <th>@Html.DisplayNameFor(model => model.Vacancies)</th>
                     <th>@Html.DisplayNameFor(model => model.StartDate)</th>
                     <th>@Html.DisplayNameFor(model => model.EndDate)</th>
@@ -23,27 +32,24 @@
                 {
                     <tr>
                         <td class="align-middle">
-                            @item.Title
-                        </td>
-                        <td class="align-middle">
-                            @item.Description.Substring(0, 50) <span>....</span>
-                        </td>
-                        <td class="align-middle">
-                            @item.Organization
+                            <img src="@item.CoverURL" class="rounded float-start" alt="cover photo" height="50" width="70">
+                          <span class="p-2 fw-bold">
+                                @(item.Title.Length > 50 ? item.Title.Substring(0, 50) + "..." : item.Title)
+                            </span> 
                         </td>
                         <td class="align-middle">
                             @item.Vacancies
                         </td>
                         <td class="align-middle">
-                            @item.StartDate
+                            @item.StartDate.ToString("dd-MMM-yyyy")
                         </td>
                         <td class="align-middle">
-                            @item.EndDate
+                            @item.EndDate.ToString("dd-MMM-yyyy")
                         </td>
                         <td class="align-middle">
-                           <a class="btn btn-outline-primary"> <i class="bi bi-pencil-square"></i> Edit </a>
-                           <a class="btn btn-outline-info"> <i class="bi bi-eye"></i> Details </a>
-                           <a class="btn btn-danger text-white"> <i class="bi bi-trash"></i> Delete </a>
+                            <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.ID"> <i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-info text-white" asp-action="Details" asp-route-id="@item.ID"> <i class="bi bi-eye"></i></a>
+                            <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@item.ID"> <i class="bi bi-trash"></i></a>
                         </td>
                     </tr>
                 }

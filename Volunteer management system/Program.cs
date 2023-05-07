@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Volunteer_management_system.Data;
+using Volunteer_management_system.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<AppDBContext>(
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// Add services.
+builder.Services.AddScoped<IOpportunitiesService, OpportunitiesService>();
 
 var app = builder.Build();
 
@@ -32,10 +35,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapControllerRoute(
-    name: "createOpportunity",
-    pattern: "{controller=CreateOpportunity}/{action=Index}/{id?}");
 
 //Seed Database
 //AppDbInitializer.Seed(app);

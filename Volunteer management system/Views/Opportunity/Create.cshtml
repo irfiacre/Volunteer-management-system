@@ -1,0 +1,75 @@
+﻿@model Opportunities
+
+@{
+    ViewData["Title"] = "Add New Opportunity";
+}
+@if (true)
+{
+    <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+}
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1 class="display-4">Create a New Opportunity</h1>
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-2">
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+                </div>
+                <div class="form-group p-1">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" placeholder="Ex: Youth volunteers Program ....">
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group p-1">
+                    <label asp-for="CoverURL" class="control-label"></label>
+                    <input asp-for="CoverURL" class="form-control" placeholder="Cover Image URL Ex: https\\...">
+                    <span asp-validation-for="CoverURL" class="text-danger"></span>
+                </div>
+                <div class="form-group p-1">
+                    <label asp-for="Organization" class="control-label"></label>
+                    <input asp-for="Organization" class="form-control" placeholder="xxx">
+                    <span asp-validation-for="Organization" class="text-danger"></span>
+                </div>
+                <div class="form-group p-1">
+                    <label asp-for="Vacancies" class="control-label"></label>
+                    <input asp-for="Vacancies" class="form-control" placeholder="Available Positions Ex: 5">
+                    <span asp-validation-for="Vacancies" class="text-danger"></span>
+                </div>
+
+                <div class="py-1 form-group row">
+                    <div class="col px-3">
+                    <label asp-for="StartDate" class="control-label"></label>
+                    <input asp-for="StartDate" class="form-control" placeholder="dd-mm-yyyy">
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+                    <div class="col">
+                    <label asp-for="EndDate" class="control-label"></label>
+                    <input asp-for="EndDate" class="form-control" placeholder="dd-mm-yyyy">
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+                </div>
+
+                <div class="form-group p-1">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control" rows="3" placeholder="Vacancy description(Tip: mention vacancy requirements, respondibilies, and more) ..."></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group px-1 py-2">
+                    <input type="submit" value=" Create " class="btn btn-outline-success float-right" />
+                    <a class="btn btn-outline-secondary" asp-action="Index">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

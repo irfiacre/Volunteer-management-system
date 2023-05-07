@@ -12,8 +12,8 @@ using Volunteer_management_system.Data;
 namespace Volunteer_management_system.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20230426044846_NewTable")]
-    partial class NewTable
+    [Migration("20230427193436_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,6 +67,10 @@ namespace Volunteer_management_system.Migrations
                 {
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CoverURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
